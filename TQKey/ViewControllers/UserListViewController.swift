@@ -1,5 +1,5 @@
 //
-//  UserListTableViewController.swift
+//  UserListViewController.swift
 //  TQKey
 //
 //  Created by naoty on 2014/06/04.
@@ -8,13 +8,19 @@
 
 import UIKit
 
-class UserListTableViewController: UITableViewController {
+class UserListViewController: UITableViewController {
     var userList: UserList = UserList()
-    var client: AFHTTPRequestOperationManager
+    let client: AFHTTPRequestOperationManager
+    let dateFormatter: NSDateFormatter
     
     init(coder aDecoder: NSCoder!) {
         let url = NSURL(string: "http://intense-dawn-3408.herokuapp.com")
-        self.client = AFHTTPRequestOperationManager(baseURL: url)
+        client = AFHTTPRequestOperationManager(baseURL: url)
+        
+        dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone(name: "JST")
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd HH':'mm':'ss"
+        
         super.init(coder: aDecoder)
     }
     
@@ -49,8 +55,13 @@ class UserListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!  {
-        var cell = tableView.dequeueReusableCellWithIdentifier("UserCell") as UITableViewCell
-        cell.textLabel.text = userList.users[indexPath.row].name
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell") as UITableViewCell
+        
+        let user = userList.users[indexPath.row]
+        cell.textLabel.text = user.athome ? "いる" : "いない"
+        cell.detailTextLabel.text = dateFormatter.stringFromDate(user.updatedAt)
+        cell.imageView.image = GravatarImage(email: user.email)
+        
         return cell
     }
 }
