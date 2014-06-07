@@ -25,11 +25,21 @@ class APIClient: AFHTTPRequestOperationManager {
             let json = responseObject as Dictionary<String, Dictionary<String, AnyObject>[]>
             let userList = UserList(JSONDictionary: json)
             self.delegate?.didLoadUserList(userList)
+            dispatch_async(dispatch_get_main_queue(), {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            })
         }
         
         func failureCallback(operation: AFHTTPRequestOperation!, error: NSError!) {
             NSLog("Error: \(error)")
+            dispatch_async(dispatch_get_main_queue(), {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            })
         }
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        })
         
         GET("/users.json", parameters: nil, success: successCallback, failure: failureCallback)
     }
