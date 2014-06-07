@@ -39,6 +39,10 @@ class UserListViewController: UITableViewController, APIClientDelegate, TQHouseL
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func didTappedReloadButton(sender: AnyObject) {
+        client.loadUserList()
+    }
 
     // #pragma mark - APIClientDelegate
 
@@ -52,11 +56,11 @@ class UserListViewController: UITableViewController, APIClientDelegate, TQHouseL
     // #pragma mark - TQHouseLocationManager
 
     func didEnterTQHouseRegion() {
-        self.client.updateUser(id: 1, athome: true)
+        self.client.updateUser(name: "naoty", athome: true)
     }
     
     func didExitTQHouseRegion() {
-        self.client.updateUser(id: 1, athome: false)
+        self.client.updateUser(name: "naoty", athome: false)
     }
 
     // #pragma mark - Table view data source

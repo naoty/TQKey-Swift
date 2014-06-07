@@ -34,13 +34,13 @@ class APIClient: AFHTTPRequestOperationManager {
         GET("/users.json", parameters: nil, success: successCallback, failure: failureCallback)
     }
     
-    func updateUser(#id: Int, athome: Bool) {
+    func updateUser(#name: String, athome: Bool) {
         let parameter = ["user": ["athome": athome]]
   
         func failureCallback(operation: AFHTTPRequestOperation!, error: NSError!) {
             NSLog("Error: \(error)")
         }
         
-        PUT("/users/\(id).json", parameters: parameter, success: nil, failure: failureCallback)
+        PUT("/users/\(name).json", parameters: parameter, success: nil, failure: failureCallback)
     }
 }

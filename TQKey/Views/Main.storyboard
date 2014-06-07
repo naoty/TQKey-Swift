@@ -40,7 +40,13 @@
                             <outlet property="delegate" destination="IsV-hi-bzz" id="dJP-vT-z3Z"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TQKey" id="zPW-HD-FlW"/>
+                    <navigationItem key="navigationItem" title="TQKey" id="zPW-HD-FlW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="H3l-Fi-h1h">
+                            <connections>
+                                <action selector="didTappedReloadButton:" destination="IsV-hi-bzz" id="ZJu-fW-wbx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8DU-eh-71Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
