@@ -9,34 +9,14 @@
 import UIKit
 
 class UserList: NSObject {
-    var users: User[]
-    let dateFormatter: NSDateFormatter
+    let users: User[]
     
     init(JSONDictionary json: Dictionary<String, Dictionary<String, AnyObject>[]>) {
         users = []
         
-        dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone(name: "JST")
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZ"
-        
         if let userObjects = json["users"] {
             for userObject in userObjects {
-                let user = User()
-                for (key, value: AnyObject) in userObject {
-                    switch key {
-                    case "name":
-                        user.name = value as String
-                    case "email":
-                        user.email = value as String
-                    case "athome":
-                        user.athome = value as Bool
-                    case "updated_at":
-                        let dateString = value as String
-                        user.updatedAt = dateFormatter.dateFromString(dateString)
-                    default:
-                        continue
-                    }
-                }
+                let user = User(JSONObject: userObject)
                 users.append(user)
             }
         }

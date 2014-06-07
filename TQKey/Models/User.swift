@@ -9,8 +9,36 @@
 import UIKit
 
 class User: NSObject {
-    var name: String = ""
-    var email: String = ""
-    var athome: Bool = true
-    var updatedAt: NSDate = NSDate()
+    let id: Int = 0
+    let name: String = ""
+    let email: String = ""
+    let athome: Bool = true
+    let updatedAt: NSDate = NSDate()
+    let dateFormatter: NSDateFormatter
+    
+    init(JSONObject json: Dictionary<String, AnyObject>) {
+        self.dateFormatter = NSDateFormatter()
+        self.dateFormatter.timeZone = NSTimeZone(name: "JST")
+        self.dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZ"
+        
+        for (key, value: AnyObject) in json {
+            switch key {
+            case "id":
+                self.id = value as Int
+            case "name":
+                self.name = value as String
+            case "email":
+                self.email = value as String
+            case "athome":
+                self.athome = value as Bool
+            case "updated_at":
+                let dateString = value as String
+                self.updatedAt = dateFormatter.dateFromString(dateString)
+            default:
+                continue
+            }
+        }
+
+        super.init()
+    }
 }

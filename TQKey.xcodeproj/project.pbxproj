@@ -14,12 +14,22 @@
 		3D04914719420BE200904980 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D04914119420BE200904980 /* Main.storyboard */; };
 		3D04915519422E8300904980 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D04915419422E8300904980 /* NSString+MD5.m */; };
 		3D0491591942312200904980 /* GravatarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0491581942312200904980 /* GravatarImage.m */; };
+		3D239D711942CD190015AD2A /* TQHouseLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D239D701942CD190015AD2A /* TQHouseLocationManager.swift */; };
+		3D239D731942CE570015AD2A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D239D721942CE570015AD2A /* CoreLocation.framework */; };
 		3D28BB0A193F487F007DA618 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D28BB09193F487F007DA618 /* Images.xcassets */; };
 		3D28BB16193F487F007DA618 /* TQKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D28BB15193F487F007DA618 /* TQKeyTests.swift */; };
+		3D63CEE71942B03200399EAF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63CEE61942B03200399EAF /* APIClient.swift */; };
 		9736246B572E42B19378CC41 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F17C44FF654CA3982207B6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3D239D74194311280015AD2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D28BAF5193F487F007DA618 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D28BAFC193F487F007DA618;
+			remoteInfo = TQKey;
+		};
 		3D28BB10193F487F007DA618 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3D28BAF5193F487F007DA618 /* Project object */;
@@ -42,11 +52,14 @@
 		3D04915619422EA400904980 /* NSString+MD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		3D0491571942312200904980 /* GravatarImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GravatarImage.h; sourceTree = "<group>"; };
 		3D0491581942312200904980 /* GravatarImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GravatarImage.m; sourceTree = "<group>"; };
+		3D239D701942CD190015AD2A /* TQHouseLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TQHouseLocationManager.swift; sourceTree = "<group>"; };
+		3D239D721942CE570015AD2A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3D28BAFD193F487F007DA618 /* TQKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TQKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D28BB09193F487F007DA618 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3D28BB0F193F487F007DA618 /* TQKeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TQKeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D28BB14193F487F007DA618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D28BB15193F487F007DA618 /* TQKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TQKeyTests.swift; sourceTree = "<group>"; };
+		3D63CEE61942B03200399EAF /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		66F17C44FF654CA3982207B6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBBA667645E34B199C53B08F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D239D731942CE570015AD2A /* CoreLocation.framework in Frameworks */,
 				9736246B572E42B19378CC41 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				3D04913B19420BE200904980 /* Info.plist */,
+				3D63CEE61942B03200399EAF /* APIClient.swift */,
+				3D239D701942CD190015AD2A /* TQHouseLocationManager.swift */,
 				3D04913C19420BE200904980 /* TQKey-Bridging-Header.h */,
 				3D04915619422EA400904980 /* NSString+MD5.h */,
 				3D04915419422E8300904980 /* NSString+MD5.m */,
@@ -161,6 +177,7 @@
 		4D41945011974FA2800AB10D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D239D721942CE570015AD2A /* CoreLocation.framework */,
 				3D04915219422DF900904980 /* libcommonCrypto.dylib */,
 				66F17C44FF654CA3982207B6 /* libPods.a */,
 			);
@@ -201,6 +218,7 @@
 			);
 			dependencies = (
 				3D28BB11193F487F007DA618 /* PBXTargetDependency */,
+				3D239D75194311280015AD2A /* PBXTargetDependency */,
 			);
 			name = TQKeyTests;
 			productName = TQKeyTests;
@@ -302,8 +320,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D04915519422E8300904980 /* NSString+MD5.m in Sources */,
+				3D63CEE71942B03200399EAF /* APIClient.swift in Sources */,
 				3D04914519420BE200904980 /* AppDelegate.swift in Sources */,
 				3D04914619420BE200904980 /* UserListViewController.swift in Sources */,
+				3D239D711942CD190015AD2A /* TQHouseLocationManager.swift in Sources */,
 				3D04914319420BE200904980 /* UserList.swift in Sources */,
 				3D04914219420BE200904980 /* User.swift in Sources */,
 				3D0491591942312200904980 /* GravatarImage.m in Sources */,
@@ -321,6 +341,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3D239D75194311280015AD2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D28BAFC193F487F007DA618 /* TQKey */;
+			targetProxy = 3D239D74194311280015AD2A /* PBXContainerItemProxy */;
+		};
 		3D28BB11193F487F007DA618 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3D28BAFC193F487F007DA618 /* TQKey */;
