@@ -48,19 +48,21 @@ class UserListViewController: UITableViewController, APIClientDelegate, TQHouseL
 
     func didLoadUserList(userList: UserList) {
         self.userList = userList
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-        })
+        self.tableView.reloadData()
     }
 
     // #pragma mark - TQHouseLocationManager
 
     func didEnterTQHouseRegion() {
-        self.client.updateUser(name: "naoty", athome: true)
+        if let user = self.userList.findUser(byName: "naoty") {
+            self.client.updateUser(user, home: true)
+        }
     }
     
     func didExitTQHouseRegion() {
-        self.client.updateUser(name: "naoty", athome: false)
+        if let user = self.userList.findUser(byName: "naoty") {
+            self.client.updateUser(user, home: false)
+        }
     }
 
     // #pragma mark - Table view data source
@@ -77,7 +79,7 @@ class UserListViewController: UITableViewController, APIClientDelegate, TQHouseL
         let cell = tableView.dequeueReusableCellWithIdentifier("UserCell") as UITableViewCell
         
         let user = userList.users[indexPath.row]
-        cell.textLabel.text = user.athome ? "いる" : "いない"
+        cell.textLabel.text = user.home ? "いる" : "いない"
         cell.detailTextLabel.text = dateFormatter.stringFromDate(user.updatedAt)
         cell.imageView.image = GravatarImage(email: user.email)
         

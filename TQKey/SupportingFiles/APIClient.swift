@@ -17,40 +17,34 @@ class APIClient: AFHTTPRequestOperationManager {
     var delegate: APIClientDelegate?
     
     init() {
-        super.init(baseURL: NSURL(string: "http://intense-dawn-3408.herokuapp.com"))
+        super.init(baseURL: NSURL(string: "http://tqchain.herokuapp.com"))
     }
     
     func loadUserList() {
         func successCallback(operation: AFHTTPRequestOperation!, responseObject: AnyObject!) {
-            let json = responseObject as Dictionary<String, Dictionary<String, AnyObject>[]>
-            let userList = UserList(JSONDictionary: json)
+            let json = responseObject as Dictionary<String, AnyObject>[]
+            let userList = UserList(JSON: json)
             self.delegate?.didLoadUserList(userList)
-            dispatch_async(dispatch_get_main_queue(), {
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            })
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
         
         func failureCallback(operation: AFHTTPRequestOperation!, error: NSError!) {
             NSLog("Error: \(error)")
-            dispatch_async(dispatch_get_main_queue(), {
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            })
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
         
-        dispatch_async(dispatch_get_main_queue(), {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        })
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        GET("/users.json", parameters: nil, success: successCallback, failure: failureCallback)
+        GET("/users", parameters: nil, success: successCallback, failure: failureCallback)
     }
     
-    func updateUser(#name: String, athome: Bool) {
-        let parameter = ["user": ["athome": athome]]
+    func updateUser(user: User #home: Bool) {
+        let parameter = ["home": home]
   
         func failureCallback(operation: AFHTTPRequestOperation!, error: NSError!) {
             NSLog("Error: \(error)")
         }
         
-        PUT("/users/\(name).json", parameters: parameter, success: nil, failure: failureCallback)
+        PATCH("/users/\(user.id)", parameters: parameter, success: nil, failure: failureCallback)
     }
 }

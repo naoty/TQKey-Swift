@@ -11,20 +11,23 @@ import UIKit
 class UserList: NSObject {
     let users: User[]
     
-    init(JSONDictionary json: Dictionary<String, Dictionary<String, AnyObject>[]>) {
+    init(JSON jsonObjects: Dictionary<String, AnyObject>[]) {
         users = []
         
-        if let userObjects = json["users"] {
-            for userObject in userObjects {
-                let user = User(JSONObject: userObject)
-                users.append(user)
-            }
+        for jsonObject in jsonObjects {
+            let user = User(JSON: jsonObject)
+            users.append(user)
         }
         
         super.init()
     }
     
     convenience init() {
-        self.init(JSONDictionary: ["users": []])
+        self.init(JSON: [])
+    }
+    
+    func findUser(byName name: String) -> User? {
+        let filteredUsers = self.users.filter { user in user.name == name }
+        return filteredUsers[0]
     }
 }

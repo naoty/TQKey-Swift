@@ -12,11 +12,11 @@ class User: NSObject {
     let id: Int = 0
     let name: String = ""
     let email: String = ""
-    let athome: Bool = true
+    let home: Bool = true
     let updatedAt: NSDate = NSDate()
     let dateFormatter: NSDateFormatter
     
-    init(JSONObject json: Dictionary<String, AnyObject>) {
+    init(JSON json: Dictionary<String, AnyObject>) {
         self.dateFormatter = NSDateFormatter()
         self.dateFormatter.timeZone = NSTimeZone(name: "JST")
         self.dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZ"
@@ -29,8 +29,8 @@ class User: NSObject {
                 self.name = value as String
             case "email":
                 self.email = value as String
-            case "athome":
-                self.athome = value as Bool
+            case "home":
+                self.home = value as Bool
             case "updated_at":
                 let dateString = value as String
                 self.updatedAt = dateFormatter.dateFromString(dateString)
